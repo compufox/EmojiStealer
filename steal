@@ -5,9 +5,9 @@ require 'net/http'
 EmojiEndpoint = '/api/v1/custom_emojis'
 
 ARGV.each do |instance|
-  outfolder = "./#{instance.sub!(/^https?:\/\//, '').gsub('.', '_')}_emoji" 
+  outfolder = "./#{instance.sub(/^https?:\/\//, '').gsub('.', '_')}_emoji" 
   
-  instance = 'https://' + instance
+  instance = 'https://' + instance.sub(/^https?:\/\//, '')
   
   emojiList =
     JSON.parse(
