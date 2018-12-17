@@ -18,13 +18,10 @@ ARGV.each do |instance|
   
   Dir.chdir(outfolder) do
     emojiList.each do |e|
-      if e['visible_in_picker']
+      puts "Saving #{e['shortcode']} to #{outfolder}/#{e['shortcode']}.png"
         
-        puts "Saving #{e['shortcode']} to #{outfolder}/#{e['shortcode']}.png"
-        
-        File.write("#{e['shortcode']}.png",
-                   Net::HTTP.get(URI.parse(e['static_url'])))
-      end
+      File.write("#{e['shortcode']}.png",
+                 Net::HTTP.get(URI.parse(e['static_url'])))
     end
   end
 end
